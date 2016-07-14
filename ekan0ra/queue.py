@@ -27,13 +27,11 @@ class Queue(list):
 
     def dequeue(self, nick):
         """
-        Remove first item matching `nick` in queue.
+        Remove every occurrence of user from a queue.
         """
-        try:
-            self.remove(nick)
-            return True
-        except ValueError:
-            return False
+        result=self.count(nick)>0
+        self=filter(lambda x: x!=nick,self)
+        return result
 
     def has_next(self):
         """Check if queue has at least one item."""
