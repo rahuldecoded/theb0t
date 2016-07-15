@@ -25,12 +25,15 @@ class Queue(list):
         """Add nick to queue."""
         self.append(nick)
 
-    def dequeue(self, nick):
+    def dequeue(self, nick, all=False):
         """
-        Remove every occurrence of user from a queue.
+        Remove every occurrence of `nick` from queue.
         """
         result=self.count(nick)>0
-        self=filter(lambda x: x!=nick,self)
+        if all and result:
+            self = filter(lambda x: x != nick, self)
+        elif result:
+            self.remove(nick)
         return result
 
     def has_next(self):
