@@ -40,7 +40,7 @@ class Queue(list):
         """Check if queue has at least one item."""
         return len(self) > 0
 
-    def peek_next(self):
+    def peek(self):
         """
         Get a look at the next item to be popped from the queue,
         but don't remove it from queue.
